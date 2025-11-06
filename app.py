@@ -92,5 +92,3 @@ if "quiz" in st.session_state:
         del st.session_state["quiz"]
 
 
-So u this i want to make its UI better make it proffesional remove any emojis make font proffesional try lighter theme
-
