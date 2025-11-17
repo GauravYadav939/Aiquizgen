@@ -23,7 +23,7 @@ st.title("Quiz Generator")
 st.write("Upload a PDF to generate multiple-choice questions.")
 
 # Upload PDF
-uploaded_file = st.file_uploader("📄 Upload your PDF file", type=["pdf"])
+uploaded_file = st.file_uploader("Upload your PDF file", type=["pdf"])
 
 # Extract text from PDF
 def extract_text_from_pdf(file):
@@ -59,34 +59,35 @@ if uploaded_file is not None:
     if not text.strip():
         st.error("Uploaded PDF contained no extractable text. Try a different PDF.")
     else:
-        st.success("✅ PDF uploaded and processed successfully!")
-        num_questions = st.number_input("🔢 How many questions do you want to generate?", min_value=1, max_value=20, value=5)
+        st.success("PDF uploaded and processed successfully!")
+        num_questions = st.number_input("How many questions do you want to generate?", min_value=1, max_value=20, value=5)
 
-        if st.button("🚀 Generate Quiz"):
+        if st.button("Generate Quiz"):
             mcqs = generate_mcqs(text, num_questions=num_questions)
 
             if not mcqs:
-                st.warning("⚠️ Could not generate questions. Try uploading a longer or more detailed PDF.")
+                st.warning("Could not generate questions. Try uploading a longer or more detailed PDF.")
             else:
                 st.session_state["quiz"] = mcqs
                 st.session_state["answers"] = {}
 
 # If quiz already generated
 if "quiz" in st.session_state:
-    st.subheader("📚 Your Quiz is Ready!")
+    st.subheader("Your Quiz is Ready!")
 
     for i, (q, options, ans) in enumerate(st.session_state["quiz"], 1):
         selected = st.radio(f"**Q{i}.** {q}", options, key=f"q{i}", index=None)  # <-- FIXED
         st.session_state["answers"][i] = {"selected": selected, "correct": ans}
 
-    if st.button("✅ Submit All"):
+    if st.button("Submit All"):
         score = 0
         for i, data in st.session_state["answers"].items():
             if data["selected"] == data["correct"]:
                 score += 1
-        st.success(f"🏁 Final Score: **{score}/{len(st.session_state['answers'])}**")
-        st.info("✨ Thanks for using this Quiz Generator by **Gaurav Yadav,Mayank Kaushik,Aadarsh Tripathi,Satyam Srivastava of [1CSE17]** ✨")
+        st.success(f"Final Score: **{score}/{len(st.session_state['answers'])}**")
+        st.info("Thanks for using this Quiz Generator :) **Gaurav Yadav,Mayank Kaushik,Aadarsh Tripathi,Satyam Srivastava [1CSE17]**")
         del st.session_state["quiz"]
+
 
 
 
