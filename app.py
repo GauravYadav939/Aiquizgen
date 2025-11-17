@@ -18,12 +18,17 @@ for pkg in required:
     except LookupError:
         nltk.download(pkg)
 
-# Streamlit Page Config
-st.set_page_config(page_title="AI Quiz Generator", page_icon="🧠", layout="wide")
+st.set_page_config(page_title="AI Quiz Generator", layout="wide")
+st.title("AI Quiz Generator")
+st.write("Upload a PDF to generate multiple-choice questions.")
 
-# Title
-st.title("🧠 AI Quiz Generator - IILM")
-st.write("Upload a PDF and let AI generate a fun multiple-choice quiz from it!")
+
+# # Streamlit Page Config
+# st.set_page_config(page_title="AI Quiz Generator", page_icon="🧠", layout="wide")
+
+# # Title
+# st.title("🧠 AI Quiz Generator - IILM")
+# st.write("Upload a PDF and let AI generate a fun multiple-choice quiz from it!")
 
 # Upload PDF
 uploaded_file = st.file_uploader("📄 Upload your PDF file", type=["pdf"])
@@ -90,5 +95,8 @@ if "quiz" in st.session_state:
         st.success(f"🏁 Final Score: **{score}/{len(st.session_state['answers'])}**")
         st.info("✨ Thanks for using this AI-powered Quiz Generator by **Gaurav Yadav [1CSE17]** ✨")
         del st.session_state["quiz"]
+
+
+
 
 
