@@ -19,7 +19,7 @@ for pkg in required:
         nltk.download(pkg)
 
 st.set_page_config(page_title="AI Quiz Generator", layout="wide")
-st.title("AI Quiz Generator")
+st.title("Quiz Generator")
 st.write("Upload a PDF to generate multiple-choice questions.")
 
 # Upload PDF
@@ -85,8 +85,9 @@ if "quiz" in st.session_state:
             if data["selected"] == data["correct"]:
                 score += 1
         st.success(f"🏁 Final Score: **{score}/{len(st.session_state['answers'])}**")
-        st.info("✨ Thanks for using this AI-powered Quiz Generator by **Gaurav Yadav [1CSE17]** ✨")
+        st.info("✨ Thanks for using this Quiz Generator by **Gaurav Yadav,Mayank Kaushik,Aadarsh Tripathi,Satyam Srivastava of [1CSE17]** ✨")
         del st.session_state["quiz"]
+
 
 
 
