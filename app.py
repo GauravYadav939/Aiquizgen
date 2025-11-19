@@ -131,8 +131,8 @@ def generate_mcqs(text, num_questions=5):
 
 # --- 3. Streamlit UI ---
 
-st.set_page_config(page_title="AI Quiz Generator", layout="wide")
-st.title("AI Quiz Generator")
+st.set_page_config(page_title="Quiz Generator", layout="wide")
+st.title("Quiz Generator")
 st.markdown("Upload a PDF to generate **concept-based** multiple-choice questions (Cleaned & Filtered).")
 
 with st.sidebar:
@@ -212,6 +212,7 @@ if st.session_state["quiz_data"]:
 # Footer
 st.markdown("---")
 st.caption("Project by: Gaurav Yadav, Mayank Kaushik, Aadarsh Tripathi, Satyam Srivastava [1CSE17]")
+
 
 
 
